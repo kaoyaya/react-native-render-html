@@ -124,8 +124,8 @@ export default class HTMLImage extends PureComponent {
     }
 
     render () {
-        const { source, style, passProps } = this.props;
+        const { source, style, passProps, onPress } = this.props;
 
-        return !this.state.error ? this.validImage(source, style, passProps) : this.errorImage;
+        return !this.state.error ? this.validImage(source, style, passProps,onPress) : this.errorImage;
     }
 }
