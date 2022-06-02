@@ -54,6 +54,8 @@ export function a (htmlAttribs, children, convertedCSSStyles, passProps) {
 }
 
 export function img (htmlAttribs, children, convertedCSSStyles, { key, ...passProps } = {}) {
+    const { onLinkPress } = passProps;
+    const onPress = (evt) => onLinkPress && htmlAttribs && onLinkPress(htmlAttribs.src, htmlAttribs)
     if (!htmlAttribs.src) {
         return false;
     }
@@ -73,6 +75,7 @@ export function img (htmlAttribs, children, convertedCSSStyles, { key, ...passP
           height={height}
           style={style}
           key={key}
+          onPress={onPress}
           testID="img"
           {...getImgProps(passProps)}
         />

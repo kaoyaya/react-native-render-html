@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Image, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class HTMLImage extends PureComponent {
     constructor (props) {
@@ -102,13 +103,15 @@ export default class HTMLImage extends PureComponent {
         );
     }
 
-    validImage (source, style, props = {}) {
+    validImage (source, style, props = {}, onPress={}) {
         return (
-            <Image
-              source={source}
-              style={[style, { width: this.state.width, height: this.state.height, resizeMode: 'cover' }]}
-              {...props}
-            />
+          <TouchableOpacity activeOpacity={1} onPress={onPress}>
+              <Image
+                source={source}
+                style={[{ width: this.state.width, height: this.state.height, resizeMode: "cover" }, style]}
+                {...props}
+              />
+          </TouchableOpacity>
         );
     }
 
